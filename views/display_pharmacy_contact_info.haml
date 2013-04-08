@@ -1,0 +1,30 @@
+%h2 The following information is now stored in the database for this pharmacy.
+%p
+  Pharmacy Name:
+  %b
+    - @pharm
+-# %p
+-#   Primary Contact Name:
+-#   %b #{@prim_name}
+%p
+  Primary Contact Phone Number:
+  %b = #{@pharm}.preferred_number_id
+-# %p
+-#   Alternate Contact Name:
+-#   %b #{@alt_name}
+-# %p
+-#   Alternate Contact Name:
+-#   %b #{@alt_number}
+-# %p
+-#   Contact Time Range 1:
+-#   %b (#{@contact_time_start_1} to #{@contact_time_end_1})
+-# %p
+-#   Contact Time Range 2:
+-#   %b (#{@contact_time_start_2} to #{@contact_time_end_2})
+-# %p
+  GPS Coordinates:
+  %b =@pharm.lat , @pharm.long
+%p
+-#   <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=#{@lat}+#{@long}&amp;hl=en&amp;sll=#{@lat},#{@long}&amp;sspn=0.002328,0.003455&amp;t=w&amp;ie=UTF8&amp;z=14&amp;ll=#{@lat},#{@long}&amp;output=embed"></iframe>
+-#   <br /><small><a href="https://maps.google.com/maps?q=#{@lat}+#{@long}&amp;hl=en&amp;sll=#{@lat},#{@long}&amp;sspn=0.002328,0.003455&amp;t=w&amp;ie=UTF8&amp;z=14&amp;ll=#{@lat},#{@long}&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+-# %p

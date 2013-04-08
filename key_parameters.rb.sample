@@ -1,0 +1,53 @@
+# KEY PARAMETERS (and other senstiive stuff) FOR BANGPHARMA
+
+# this is the db connection with sequel
+# http://sequel.rubyforge.org/rdoc/files/doc/association_basics_rdoc.html
+DB = Sequel.connect(
+                    :adapter => 'mysql',
+                    :host => 'localhost',
+                    :database => 'bangpharma_prod',
+                    :user => 'bangpharma_user',
+                    :password=>'go2bangla!'
+                    )
+
+
+
+$sid = 'blah'
+$token = 'blah'
+$caller_id_number = 'blah'
+$sms_out_number = 'blah'
+$base_url = "app_url_here"
+$max_ors_expected_per_day = 100
+
+# mail gun settings
+$mailgun_apikey = "https://api:key-blahblahblahh"
+
+# number with privliges
+$admin_phone_numbers = {
+  		     'Andrew' => '+14109119111',
+		     'Andrew2' => '+14100000000'
+ 		      }
+
+# numbers to send pharmacy specific errors to
+# each staff member is assigned specific pharmacies
+# when that pharmacy has an error they are alerted via sms
+$pharm_assignments = {
+  'Nusrat' => 251.step(261,1).to_a,
+  'Sonia' =>  251.step(261,1).to_a
+  }
+
+$study_staff_numbers = {
+  'Sonia' => '+88018501269222',
+  'Nusrat' => '+8801723838222',
+} # to allow sms db interactions
+
+$admin_emails = 'myemail@gmail.com'.split(/, */)
+$sender_email_address = "bangpharma <errors@bangpharma.mailgun.org>"
+$max_ors_attempts = 2 # this is the number of attempts before we issue an alert to study staff and stop calling
+$max_hours_since_last_sale = 3 #if call is made within these number of hours of a previously recorded sale we will prompt to ask if this is a revision
+$trigger_hours_for_multiday_report_question = 36 #hours since last sucessful sale that will trigger us to ask if they are reporting for more than one day
+$sms_max_lag_for_session = 20*60 # 20 minutes in seconds
+#password and username for protected
+$protected_user = 'username'
+$protected_password = 'password'
+$recording_language = 'ban'

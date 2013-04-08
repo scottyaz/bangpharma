@@ -1,0 +1,48 @@
+#header
+  %div{:id => "saved", :style => "color:red;display:none"}
+    #{saved ? "Saved" : ""}
+  %h1 Edit Pharmacy
+#content
+%form{:action => "/apps/bangpharma/edit_pharmacy", :method => "post"}
+  %legend
+    Please enter information from the pharmacy enrollment form below:
+    %p
+      %input{:type => "hidden", :name => "pharmacy_id", :value => pharmacy_id ||= ""}
+      %label{:for => "pharmacy_name"} Pharmacy Name
+      %input{:type => "textbox", :name => "pharmacy_name", :id => "", :required => true, :value => pharmacy_name ||= ""}
+    %p
+      %label{:for => "numbers"} Phone numbers (in priority order separated by comma: +8801999999999, +8801721211212):
+      %input{:type => "text",
+	     :name => "numbers",
+	     :id => "",
+	     :placeholder => '+88019999999999',
+	     :width => '8000px',	  
+       :value => numbers ||= ""}
+    %p
+      %label{:for => ""} Contact Times ( 6:30-17:30, 19:30-21:00)
+      %input{:type => "text", :name => "contact_times", :id => "", :value => contact_times ||= ""}
+    %p
+      %label{:for => "GPS"} GPS Coordinates (Lat)
+      %input{:type => "text",
+	     :name => "lat",
+	     :value => lat ||= "",
+	     :id => "lat",
+	     :pattern => '(23)(\.)\d{4}',
+	     :placeholder => '23.XXXX'}
+    %p
+      %label{:for => "GPS"} GPS Coordinates (Long)
+      %input{:type => "text",
+	     :name => "long",
+       :value => long ||= "",
+	     :id => "long",
+	     :pattern => '(90)(\.)\d{4}',
+	     :placeholder => '90.XXXX'}
+    %p
+      %input{:type => "reset", :value => "Cancel"}
+      %input{:type => "submit", :value => "Submit Data"}
+
+%script{:src => 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js'}
+%script{:src => 'https://raw.github.com/dilvie/h5Validate/master/jquery.h5validate.js'}
+%script $('form').h5Validate();
+%script $("#saved").fadeIn(2000).fadeOut()
+  

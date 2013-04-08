@@ -1,0 +1,56 @@
+#header
+  %h1 Enter New Pharmacy
+#content
+%form{:action => "add_pharmacy",
+      :method => "post"}
+  %legend
+    Please enter information from the pharmacy enrollment form below:
+    %p
+      %label{:for => ""} Pharmacy Name
+      %input{:type => "textbox", :name => "pharm_name", :id => "pharm_name_id"}
+    %p
+      %label{:for => ""} Name of Primary Contact
+      %input{:type => "textbox", :name => "prim_name", :id => ""}
+    %p
+      %label{:for => ""} Phone Number of Primary Contact (+88-01799999999):
+      %input{:type => "tel",
+	     :name => "prim_number",
+	     :id => "prim_number",
+	     :placeholder => '+88-01799999999'}
+    %p
+      %label{:for => "prim_name"} Name of Alternate Contact
+      %input{:type => "textbox", :name => "alt_name", :id => "alt_name"}
+    %p
+      %label{:for => ""} Phone Number of Alternate Contact (+88-01799999999):
+      %input{:type => "tel",
+	     :name => "alt_number",
+	     :id => "alt_number",
+	     :placeholder => '+88-01799999999'}
+    %p
+
+      %label{:for => ""} Contact Time Range 1 (Start to Finish)
+      %input{:type => "time", :name => "contact_time_start_1", :id => ""}
+      %label{:for => ""} to
+      %input{:type => "time", :name => "contact_time_end_1", :id => ""}
+    %p
+      %label{:for => ""} Contact Time Range 2 (Start to Finish, Optional)
+      %input{:type => "time", :name => "contact_time_start_2", :id => ""}
+      %label{:for => ""} to
+      %input{:type => "time", :name => "contact_time_end_2", :id => ""}
+    %p
+      %label{:for => "GPS"} GPS Coordinates (Lat)
+      %input{:type => "text",
+	     :name => "lat",
+	     :id => "lat",
+	     :pattern => '(23)(\.)\d{4}',
+	     :placeholder => '23.XXXX'}
+    %p
+      %label{:for => "GPS"} GPS Coordinates (Long)
+      %input{:type => "text",
+	     :name => "long",
+	     :id => "long",
+	     :pattern => '(90)(\.)\d{4}',
+	     :placeholder => '90.XXXX'}
+    %p
+      %input{:type => "reset", :value => "Cancel"}
+      %input{:type => "submit", :value => "Submit Data"}
