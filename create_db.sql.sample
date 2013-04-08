@@ -1,0 +1,88 @@
+USE bangpharma_prod;
+
+CREATE TABLE `sales` (
+       `id` int(1) NOT NULL AUTO_INCREMENT,
+       `ors` int(1),
+       `created_at` DATETIME,
+       `number_id` varchar(64),
+       `pharmacy_id` int(1),
+       `report_type` int(1),
+       `twillio_sid` varchar(128),
+       `outcome` int(1),
+        PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `calls` (
+       `id` int(1) NOT NULL AUTO_INCREMENT,
+       `call_type` int(1),
+       `created_at` DATETIME,
+       `phone_number` varchar(64),
+       `report_type` int(1),
+       `outcome` int(1),
+        PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `sms_messages` (
+       `id` int(1) NOT NULL AUTO_INCREMENT,
+       `created_at` DATETIME,
+       `pharmacy_or_staff_id` int(1),
+       `current_state` int(1),
+       `phone_number` varchar(64),
+       `message` blob(1),
+        PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `numbers` (
+       `id` varchar(64),
+       `created_at` DATETIME,
+       `pharmacy_id` int(1),
+       `call_this_number` TINYINT(1),
+       `delete_me` TINYINT(1),
+        PRIMARY KEY (`id`)
+       );
+
+CREATE TABLE `pharmacies` (
+        `id` int(3) NOT NULL AUTO_INCREMENT,
+        `name` blob(1),
+	`best_time` TIME,
+	`preferred_number_id` varchar(64),
+	`address` blob(1),
+	`latitude`  varchar(64),
+	`longitude` varchar(64),
+        PRIMARY KEY (`id`)
+	);
+
+ALTER TABLE pharmacies AUTO_INCREMENT = 250;
+
+CREATE TABLE `errors` (
+        `id` int(1) NOT NULL AUTO_INCREMENT,
+        `number_id` varchar(64),
+	`created_at` DATETIME,
+	`code` int(1),
+	`message` blob(1),
+        PRIMARY KEY (`id`)
+	);
+
+CREATE TABLE `pending_calls` (
+       `id` int(1) NOT NULL AUTO_INCREMENT,
+       `number_id` varchar(64),
+       `attempts` int(1),
+       `error_message_sent` TINYINT(1),
+        PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `available_times` (
+       `id` int(1) NOT NULL AUTO_INCREMENT,
+       `pharmacy_id` int(1),
+       `start_time` TIME,
+       `end_time` TIME,
+        PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `tests` (
+       `id` int(1) NOT NULL AUTO_INCREMENT,
+       `incoming_call` int(1),
+       `created_at` DATETIME,
+       `incoming_sms` varchar(64),
+        PRIMARY KEY (`id`)
+);
