@@ -1257,7 +1257,7 @@ get '/errors' do
   error_data = Error.reverse_order(:created_at).map do |er|
     {
       "created_at" => er.created_at.nil? ?  nil : (er.created_at + 3600).strftime("%d/%m/%Y at %I:%M%p"),
-      "pharmacy" => er.pharmacy.name,
+      "pharmacy" => er.pharmacy.nil? ? nil : er.pharmacy.name, # incase number is not assocaited with a pharmacy
       "number" => er.number_id,
       "error code" => er.code,
       "message" => er.message
